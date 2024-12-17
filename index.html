@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Überraschung wartet auf euch!</title>
+    <style>
+        /* Allgemeine Stilregeln */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #FF6A00, #FF8C00, #FFDC73, #FF33A8, #33A8FF);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2.5em; /* Angepasst für mobile Geräte */
+            margin-top: 20px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .question-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            padding: 20px; /* Weniger Padding für mobile Geräte */
+            width: 90%; /* Flexiblere Breite */
+            max-width: 600px;
+            margin-top: 30px; /* Weniger Abstand */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeIn 2s forwards, bounceUp 2s ease-out;
+        }
+
+        .question {
+            font-size: 1.2em; /* Kleinere Schriftgröße */
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .answer-input {
+            font-size: 1em;
+            padding: 10px;
+            width: 90%; /* Breiter für mobile Geräte */
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border: none;
+            outline: none;
+        }
+
+        .answer-button {
+            background-color: #33A8FF;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 15px;
+            width: 70%; /* Breiterer Button */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .answer-button:hover {
+            background-color: #0088cc;
+            transform: scale(1.1);
+        }
+
+        .answer-button:active {
+            transform: scale(0.9);
+        }
+
+        .gutschein-container {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #000;
+            border-radius: 25px;
+            padding: 20px;
+            width: 90%; /* Flexible Breite */
+            max-width: 600px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .footer {
+            font-size: 1em;
+            margin-top: 20px;
+            color: #fff;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounceUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em; /* Kleinere Schriftgröße */
+            }
+
+            .question {
+                font-size: 1em; /* Reduzierte Schriftgröße */
+            }
+
+            .answer-button {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em; /* Noch kleinere Schriftgröße */
+            }
+
+            .answer-input {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            .answer-button {
+                font-size: 0.9em;
+                width: 80%; /* Noch schmaler für kleine Displays */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Eine Überraschung wartet auf euch!</h1>
+
+    <div id="question-container" class="question-container">
+        <p class="question">Beantwortet die Frage, um zu erfahren, was euch erwartet:</p>
+        <p class="question">Welches Meerestier hat keine Knochen, besitzt mehrere Arme und ist in der Lage komplexe Rätsel zu lösen?</p>
+
+        <input type="text" id="userAnswer" placeholder="Gib deine Antwort hier ein..." class="answer-input">
+        <button class="answer-button" onclick="checkAnswer()">Antwort abschicken</button>
+    </div>
+
+    <div id="gutschein-container" class="gutschein-container">
+        <h1>Gutschein für einen Ausflug in den Heidepark Soltau!</h1>
+        <p><strong>Für:</strong> Tammo und Jonne</p>
+        <p><strong>Von:</strong> Euren Patentanten Anna-Lisa und Chiara</p>
+        <p>Ihr habt einen ganzen Tag im Heidepark Soltau gewonnen! 🎉🎡</p>
+        <p>Wir freuen uns schon auf den Ausflug mit euch! 🎢</p>
+    </div>
+
+    <p class="footer">WOOP WOOP 🚀</p>
+
+    <script>
+        function checkAnswer() {
+            var userInput = document.getElementById('userAnswer').value.toLowerCase().trim();
+
+            if (userInput === 'krake') {
+                document.getElementById('question-container').style.display = 'none';
+                document.getElementById('gutschein-container').style.display = 'block';
+            } else {
+                alert("Leider falsch! Versuch es nochmal...");
+            }
+        }
+    </script>
+
+</body>
+</html>
